@@ -6,14 +6,14 @@
 /*   By: sehwjang <sehwjang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 20:43:42 by sehwjang          #+#    #+#             */
-/*   Updated: 2024/03/17 00:53:59 by sehwjang         ###   ########.fr       */
+/*   Updated: 2024/03/17 04:22:39 by sehwjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TREE_H
-# define TREE_H
+#ifndef PARSER_H
+# define PARSER_H
 
-// # include "libft.h"
+# include "libft.h"
 # include <stdbool.h>
 # define PIPE 0
 # define AND 1
@@ -55,5 +55,6 @@ typedef struct s_redi
 void	tree_init(t_tree *tree);
 t_tree	*tree_new_node(void);
 t_tree	*tree_make_child(t_tree *parent, t_pipe *content, bool direction);	
+t_tree	*tree_make_parent(t_tree *child, int type);
 
 #endif

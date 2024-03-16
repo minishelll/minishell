@@ -6,7 +6,7 @@
 /*   By: sehwjang <sehwjang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 20:57:44 by sehwjang          #+#    #+#             */
-/*   Updated: 2024/03/16 22:21:23 by sehwjang         ###   ########.fr       */
+/*   Updated: 2024/03/17 04:22:29 by sehwjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,18 @@ t_tree	*tree_make_child(t_tree *parent, t_pipe *content, bool direction)
 
 	child = tree_new_node();
 	if (direction == 0)
-		child->left = content;
+		child->left->pipe = content;
 	else
-		child->right = content;
+		child->right->pipe = content;
 	return (child);
+}
+
+t_tree	*tree_make_parent(t_tree *child, int type)
+{
+	t_tree	*parent;
+
+	parent = tree_new_node();
+	parent->left = child;
+	parent->type = type;
+	return (parent);
 }
