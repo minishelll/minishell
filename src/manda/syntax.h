@@ -6,7 +6,7 @@
 /*   By: sehwjang <sehwjang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 20:39:44 by sehwjang          #+#    #+#             */
-/*   Updated: 2024/03/16 20:46:43 by sehwjang         ###   ########.fr       */
+/*   Updated: 2024/03/16 22:00:50 by sehwjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define SYNTAX_H
 
 # include <stdbool.h>
-# include "tree/tree.h"
 
 typedef struct s_redi	t_redi;
 
