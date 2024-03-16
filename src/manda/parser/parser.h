@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tree.h                                             :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehwjang <sehwjang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 20:43:42 by sehwjang          #+#    #+#             */
-/*   Updated: 2024/03/16 22:03:01 by sehwjang         ###   ########.fr       */
+/*   Updated: 2024/03/17 00:53:59 by sehwjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TREE_H
 # define TREE_H
 
-# include "libft.h"
+// # include "libft.h"
 # include <stdbool.h>
 # define PIPE 0
 # define AND 1
