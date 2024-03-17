@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/07 17:25:29 by taerakim          #+#    #+#             */
-/*   Updated: 2024/03/16 22:19:43 by taerakim         ###   ########.fr       */
+/*   Created: 2024/03/16 20:41:01 by taerakim          #+#    #+#             */
+/*   Updated: 2024/03/17 10:08:55 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include <readline/readline.h>
+#include <readline/history.h>
 #include "libft.h"
 
-char	*ft_strnstr(const char *str, const char *to_find, size_t len)
+int	main(int argc, char **argv, char **envp)
 {
-	const size_t	findlen = ft_strlen(to_find);
-	size_t			i;
+	// t_tree	*root;
+	char	*input;
 
-	i = 0;
-	if (to_find[0] == '\0')
-		return ((char *)str);
-	while (str[i] && i < len)
+	if (argc != 1 && argv[1] != NULL)
+		return (0);
+		// ft_error(BASH_ARGU_ERROR , argv[1]);
+	while (1)
 	{
-		if (str[i] == to_find[0] && len - i > findlen)
-			if (ft_strncmp(&str[i], to_find, ft_strlen(to_find)) == 0)
-				return ((char *)(str + i));
-		i++;
+		input = readline("minishell$ ");
+		if (ft_strncmp(input, "EOF", 4) == 0)
+			return (0);
+		printf("input: %s\n", input);
+		// root = parser(input);
 	}
-	return (0);
+	(void)envp;
 }

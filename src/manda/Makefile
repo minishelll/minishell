@@ -5,16 +5,16 @@ ifndef SRCDIR
 	SRCDIR = $(abspath ./)
 endif
 
-NAME := 
-SRCS := .c \
+NAME := minishell
+SRCS := main.c \
 
 # SRCS(in SRCDIR) ------
-DIRS := \
+DIRS := ft_error \
 
 SUBS := $(addsuffix .a,$(DIRS))
 
 # LIBRARYS -------------
-LDLIBS := -l
+LDLIBS := -lft -lget_next_line -lreadline\
 
 include $(TOPDIR)/include_make/Variable.mk
 include $(TOPDIR)/include_make/Link.mk
