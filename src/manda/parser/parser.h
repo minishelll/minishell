@@ -6,13 +6,14 @@
 /*   By: sehwjang <sehwjang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 20:43:42 by sehwjang          #+#    #+#             */
-/*   Updated: 2024/03/17 04:22:39 by sehwjang         ###   ########.fr       */
+/*   Updated: 2024/03/17 05:47:16 by sehwjang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
 
+#include <stdio.h>
 # include "libft.h"
 # include <stdbool.h>
 # define PIPE 0
@@ -22,6 +23,7 @@
 typedef struct s_tree	t_tree;
 typedef struct s_pipe	t_pipe;
 typedef struct s_redi	t_redi;
+typedef struct s_node	t_node;
 
 typedef struct s_tree
 {
@@ -56,5 +58,11 @@ void	tree_init(t_tree *tree);
 t_tree	*tree_new_node(void);
 t_tree	*tree_make_child(t_tree *parent, t_pipe *content, bool direction);	
 t_tree	*tree_make_parent(t_tree *child, int type);
+
+typedef struct s_node
+{
+	char	*op;
+	char	*str;
+}			t_node;
 
 #endif
