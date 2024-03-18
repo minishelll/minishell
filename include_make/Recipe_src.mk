@@ -9,7 +9,7 @@ all:
 	$(foreach dir,$(DIRS),$(MAKE) TOPDIR=$(TOPDIR) SRCDIR=`pwd` -C $(dir) $@;)
 	$(MAKE) $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(SUBS)
 	$(LINK.o) $^ $(LDLIBS) -o $@
 	$(MAKE) files=$(NAME) src_dir=`pwd` dst_dir=$(TOPDIR) link_files
 

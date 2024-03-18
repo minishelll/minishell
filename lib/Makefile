@@ -2,7 +2,7 @@ ifndef TOPDIR
 	TOPDIR = $(abspath ../)
 endif
 
-LIBS := libsub \
+LIBS := libft \
 
 all clean fclean re:
 	$(foreach lib,$(LIBS),$(MAKE) TOPDIR=$(TOPDIR) -C $(lib) $@;)

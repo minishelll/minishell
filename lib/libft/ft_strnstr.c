@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:25:29 by taerakim          #+#    #+#             */
-/*   Updated: 2024/03/08 20:24:21 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/03/18 10:57:13 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 	while (str[i] && i < len)
 	{
 		if (str[i] == to_find[0] && len - i > findlen)
-			if (ft_strcmp(&str[i], to_find) == 0)
+			if (ft_strncmp(&str[i], to_find, findlen) == 0)
 				return ((char *)(str + i));
 		i++;
 	}
