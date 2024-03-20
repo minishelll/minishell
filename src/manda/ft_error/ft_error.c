@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 00:16:58 by taerakim          #+#    #+#             */
-/*   Updated: 2024/03/13 17:34:33 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/03/19 18:50:56 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@ static void	print_msg(int error_case, char *target)
 		message = strerror(errno);
 	if (error_case == ACCESS_ERROR)
 		message = "command not found";
-	ft_putstr_fd("pipex: ", 2);
-	ft_putstr_fd(target, 2);
-	ft_putstr_fd(": ", 2);
-	ft_putstr_fd(message, 2);
-	ft_putstr_fd("\n", 2);
+	if (error_case == SYNTEX_ERROR)
+		message = "syntax error near unexpected token";
+	if (error_case == SYNTEX_ERROR)
+		printf("minishell: %s `%s'\n", message, target);
+	else
+		printf("minishell: %s: %s\n", target, message);
 }
 
 void	ft_error(int error_case, char *target)
@@ -38,6 +39,8 @@ void	ft_error(int error_case, char *target)
 		exit(EXIT_FAILURE);
 	}
 	print_msg(error_case, target);
+	if (error_case == SYNTEX_ERROR)
+		exit(258);
 	if (error_case == INPUT_REDIRECTION_ERROR)
 		return ;
 	if (error_case == OUTPUT_REDIRECTION_ERROR)

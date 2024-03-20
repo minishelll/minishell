@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 20:43:42 by sehwjang          #+#    #+#             */
-/*   Updated: 2024/03/18 14:21:35 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/03/19 19:16:04 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@
 # define OR 2
 # define PEREN 3
 
-# define COMMAND 0
-# define OPERATOR 1
-
 # define LEFT 0
 # define RIGHT 1
 
@@ -33,21 +30,24 @@ typedef struct s_cmd	t_cmd;
 typedef struct s_redi	t_redi;
 typedef struct s_node	t_node;
 
+# define COMMAND 0
+# define OPERATOR 1
+
 typedef struct s_tree
 {
-	int		type;
+	int		type;// ONLY OPERATOR
 	bool	child_type[2];
-	void	*left;
+		// OPERATOR -> left&right == t_tree
+		// COMMAND -> left&right == t_cmd
+	void	*left;// t_tree OR t_cmd
 	void	*right;
 }			t_tree;
 
 typedef struct s_cmd
 {
-	// char	**cmds;
-	char	*orgin_cmd;
-	t_redi	*in;
+	char	**cmds; //무사히 open하고 나면, execve하기
+	t_redi	*in; //open(); -> error 종료
 	t_redi	*out;
-	t_cmd	*next;
 }			t_cmd;
 
 # define INPUT 0
@@ -63,9 +63,9 @@ typedef struct s_redi
 	t_redi	*next;
 }			t_redi;
 
-t_tree	*lexer(char *str, int len);
+t_tree	*parser(char *str, int len);
 
-t_tree	*init_tree_node(void);
+t_tree	*init_tree_node(int type);
 t_tree	*make_parent_tree(t_tree *child, bool direction, int type);
 /*
 void	tree_init(t_tree *tree);

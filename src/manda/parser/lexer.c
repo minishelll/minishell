@@ -6,7 +6,7 @@
 /*   By: taerakim <taerakim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 19:21:00 by taerakim          #+#    #+#             */
-/*   Updated: 2024/03/18 15:32:58 by taerakim         ###   ########.fr       */
+/*   Updated: 2024/03/19 12:34:03 by taerakim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	handle_parenthesis(t_tree **parent_right, char *str)
 	root->type = PEREN;
 	root->right = lexer(&str[1], i);
 	*parent_right = root;
+	(*parent_right)->child_type[RIGHT] = PEREN;
 	return (i);
 }
 
@@ -100,6 +101,30 @@ t_tree	*handle_operator(t_tree *root, char *str, int start, int i)
 	return (tree);
 }
 
+int	handle_all_type(t_tree **root, char *str, int len)
+{
+	int		type;
+
+	type = INIT;
+	if (str[0] == '(')
+		type = PEREN;
+	else if (str[0] == '|' && str[1] == '|')
+		type = OR;
+	else if (str[0] == '|')
+		type = PIPE;
+	else if (str[0] == '&' && str[1] == '&')
+		type = AND;
+	else
+		return (NOT_FOUND);
+	if (type == PEREN)
+		handle_parenthesis(*root, str);
+	else
+		handle_operator()
+		
+
+	
+}
+
 t_tree	*lexer(char *str, int len)
 {
 	t_tree	*root;
@@ -111,7 +136,7 @@ t_tree	*lexer(char *str, int len)
 	i = 0;
 	while (i < len && str[i] != '\0')
 	{
-		if (str[i] == '|' || (str[i] == '&' && str[i + 1] == '&'))//우선무지성 떼는게 맞기떄문에 |는 파이프로 인식하고 &하나는 따로 가능한 연산자가 아니라고 에러해야겠따지원하지않는 연산자입니다
+		if (str[i] == '|' || str[i] == '&' || str[i] == '(')//우선무지성 떼는게 맞기떄문에 |는 파이프로 인식하고 &하나는 따로 가능한 연산자가 아니라고 에러해야겠따지원하지않는 연산자입니다
 		{
 			root = handle_operator(root, str, start, i);
 			start = i + 1;
