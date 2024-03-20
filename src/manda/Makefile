@@ -6,7 +6,7 @@ ifndef SRCDIR
 endif
 
 NAME := minishell
-SRCS := ttest_main.c \
+SRCS := main_tree_print.c \
 
 # SRCS(in SRCDIR) ------
 DIRS := parser \

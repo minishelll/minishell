@@ -8,7 +8,11 @@ endif
 NAME := parser.a
 HEAD := parser.h
 SRCS := tree.c \
-		lexer_ver2.c \
+		parser.c \
+		parser_logical.c \
+		parser_pipe.c \
+		parser_command.c \
+		parser_util.c \
 
 LDLIBS := -lft
 
